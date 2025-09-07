@@ -16,10 +16,9 @@ class Regras {
         let adotadosPessoa1 = 0;
         let adotadosPessoa2 = 0;
 
-        // Função para verificar quantos animais a pessoa poderia adotar, incluindo Loco
         const animaisAdotaveis = (brinquedosPessoa, animais) => {
             return animais.filter((animal) => {
-                if (animal === "Loco") return true; // contamos Loco para análise de companhia depois
+                if (animal === "Loco") return true;
                 const dados = dadosAnimais[animal];
                 return Utils.contemNaOrdem(brinquedosPessoa, dados.brinquedos);
             });
@@ -37,17 +36,14 @@ class Regras {
             let atendeP2 = Utils.contemNaOrdem(p2, brinquedos) && adotadosPessoa2 < 3;
 
             if (animal === "Loco") {
-                // Lista de animais restantes na ordem (exceto Loco)
                 const restantes = ordem.slice(i + 1);
                 const possiveisP1 = animaisAdotaveis(p1, restantes);
                 const possiveisP2 = animaisAdotaveis(p2, restantes);
 
-                // Loco vai para pessoa 1 se ela tiver espaço e pelo menos outro animal na rodada
                 atendeP1 = adotadosPessoa1 < 3 && possiveisP1.length > 0;
                 atendeP2 = adotadosPessoa2 < 3 && possiveisP2.length > 0;
             }
 
-            // Gatos → se ambos atendem, vai para abrigo
             if (tipo === "gato" && atendeP1 && atendeP2) {
                 destino = "abrigo";
             } else if (atendeP1 && !atendeP2) {
@@ -57,7 +53,6 @@ class Regras {
                 destino = "pessoa 2";
                 adotadosPessoa2++;
             } else if (atendeP1 && atendeP2) {
-                // Prioridade para quem ainda não atingiu limite
                 if (adotadosPessoa1 < 3) {
                     destino = "pessoa 1";
                     adotadosPessoa1++;
@@ -72,7 +67,6 @@ class Regras {
             resultado.push(`${animal} - ${destino}`);
         }
 
-        // Ordena por ordem alfabética
         return resultado.sort();
     }
 }

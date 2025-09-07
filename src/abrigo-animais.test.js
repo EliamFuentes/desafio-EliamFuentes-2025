@@ -47,7 +47,6 @@ describe('Abrigo de Animais - casos extras', () => {
 
   test('Loco com companhia → só adota se houver outro animal', () => {
     const resultado = abrigo.encontraPessoas("RATO,BOLA", "RATO,NOVELO", "Rex,Loco");
-    // pessoa 1 adota Rex, Loco só adota se tiver companhia, aqui deve ir para abrigo
     expect(resultado.lista).toContain("Rex - pessoa 1");
     expect(resultado.lista).toContain("Loco - abrigo");
   });
@@ -58,7 +57,6 @@ describe('Abrigo de Animais - casos extras', () => {
       "RATO,BOLA,CAIXA,NOVELO,LASER",
       "Rex,Bola,Bebe,Loco"
     );
-    // verifica se ninguém ultrapassa 3 animais
     const p1 = resultado.lista.filter(a => a.includes("pessoa 1"));
     const p2 = resultado.lista.filter(a => a.includes("pessoa 2"));
     expect(p1.length).toBeLessThanOrEqual(3);

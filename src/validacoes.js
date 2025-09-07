@@ -15,17 +15,14 @@ class Validacoes {
     }
 
     static validarEntradas(p1, p2, ordemAnimais) {
-        // Duplicatas nas listas individuais
         if (!this.semDuplicatas(p1) || !this.semDuplicatas(p2)) return "Brinquedo inválido";
         if (!this.semDuplicatas(ordemAnimais)) return "Animal inválido";
 
-        // Validar animais
         if (!this.animaisValidos(ordemAnimais)) return "Animal inválido";
 
-        // Validar brinquedos
         if (!this.brinquedosValidos(p1) || !this.brinquedosValidos(p2)) return "Brinquedo inválido";
 
-        return null; // Nenhum erro
+        return null;
     }
 }
 
