@@ -1,5 +1,5 @@
 class Utils {
-    static contemNaOrdem(brinquedosPessoa, brinquedosAnimais) {
+    static verificarSequencia(brinquedosPessoa, brinquedosAnimais) {
         let i = 0;
         for (const brinquedo of brinquedosPessoa) {
             if (brinquedo === brinquedosAnimais[i]) {

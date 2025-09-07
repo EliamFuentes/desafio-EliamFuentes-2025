@@ -2,7 +2,7 @@ const animaisValidos = ["Rex", "Mimi", "Fofo", "Zero", "Bola", "Bebe", "Loco"];
 const brinquedosValidos = ["RATO", "BOLA", "LASER", "CAIXA", "NOVELO", "SKATE"];
 
 class Validacoes {
-    static semDuplicatas(lista) {
+    static removerDuplicados(lista) {
         return new Set(lista).size === lista.length;
     }
 
@@ -15,8 +15,8 @@ class Validacoes {
     }
 
     static validarEntradas(p1, p2, ordemAnimais) {
-        if (!this.semDuplicatas(p1) || !this.semDuplicatas(p2)) return "Brinquedo inválido";
-        if (!this.semDuplicatas(ordemAnimais)) return "Animal inválido";
+        if (!this.removerDuplicados(p1) || !this.removerDuplicados(p2)) return "Brinquedo inválido";
+        if (!this.removerDuplicados(ordemAnimais)) return "Animal inválido";
 
         if (!this.animaisValidos(ordemAnimais)) return "Animal inválido";
 

@@ -16,11 +16,11 @@ class Regras {
         let adotadosPessoa1 = 0;
         let adotadosPessoa2 = 0;
 
-        const animaisAdotaveis = (brinquedosPessoa, animais) => {
+        const animaisParaAdocao = (brinquedosPessoa, animais) => {
             return animais.filter((animal) => {
                 if (animal === "Loco") return true;
                 const dados = dadosAnimais[animal];
-                return Utils.contemNaOrdem(brinquedosPessoa, dados.brinquedos);
+                return Utils.verificarSequencia(brinquedosPessoa, dados.brinquedos);
             });
         };
 
@@ -32,13 +32,13 @@ class Regras {
             const { tipo, brinquedos } = dados;
 
             let destino = "abrigo";
-            let atendeP1 = Utils.contemNaOrdem(p1, brinquedos) && adotadosPessoa1 < 3;
-            let atendeP2 = Utils.contemNaOrdem(p2, brinquedos) && adotadosPessoa2 < 3;
+            let atendeP1 = Utils.verificarSequencia(p1, brinquedos) && adotadosPessoa1 < 3;
+            let atendeP2 = Utils.verificarSequencia(p2, brinquedos) && adotadosPessoa2 < 3;
 
             if (animal === "Loco") {
                 const restantes = ordem.slice(i + 1);
-                const possiveisP1 = animaisAdotaveis(p1, restantes);
-                const possiveisP2 = animaisAdotaveis(p2, restantes);
+                const possiveisP1 = animaisParaAdocao(p1, restantes);
+                const possiveisP2 = animaisParaAdocao(p2, restantes);
 
                 atendeP1 = adotadosPessoa1 < 3 && possiveisP1.length > 0;
                 atendeP2 = adotadosPessoa2 < 3 && possiveisP2.length > 0;
